@@ -64,5 +64,10 @@ const options = {
 };
 
 const font = buildFontMap(Gallant_12x22, encoding);
-let a = ["│"].map(c => render(c, font, options)).join("\n");
+
+Object.assign(font, buildFontMap(
+	require("./bsd-glyphs.js"),
+	require("./bsd-encoding.js")
+));
+let a = encoding.map(c => render(c, font, options)).join("\n");
 console.log(a);
