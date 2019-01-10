@@ -64,5 +64,5 @@ const options = {
 };
 
 const font = buildFontMap(Gallant_12x22, encoding);
-let a = encoding.map(c => render(c, font, options)).join("\n");
+let a = ["│"].map(c => render(c, font, options)).join("\n");
 console.log(a);
