@@ -3,7 +3,7 @@
 
 const Gallant_12x22 = require("./gallant12x22.js");
 
-function parseFont(data, on = "X", off = " "){
+function parseFont(data, on = "█", off = " "){
 	const chars = [];
 	for(let i = 0; i < data.length; i += 44){
 		const char = [];

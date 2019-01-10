@@ -21,4 +21,3 @@ package-lock.json
 # Project-specific
 /temp
 /solarize-12x29-psf
-!/test.js
