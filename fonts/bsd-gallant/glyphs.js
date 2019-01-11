@@ -1,5 +1,8 @@
 "use strict";
 
+// NOTE: This file only includes characters which
+// are different to the original Sun Gallant.
+
 module.exports = [
 
 /* % */

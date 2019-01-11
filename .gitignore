@@ -17,7 +17,4 @@ package-lock.json
 !unique*.log
 !urls.log
 /test.mjs
-
-# Project-specific
-/temp
-/solarize-12x29-psf
+/test.js

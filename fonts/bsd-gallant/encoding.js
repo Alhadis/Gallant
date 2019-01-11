@@ -1,5 +1,9 @@
 "use strict";
 
+// NOTE: this "encoding" maps to the order of `glyphs.js`,
+// which only contains glyphs different to the original
+// Sun Gallant. See: ../sun-gallant/glyphs.js
+
 module.exports = [
 	"%",
 	"(",
