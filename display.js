@@ -1,16 +1,16 @@
-#!/usr/bin/env node
 "use strict";
 
 const Gallant_12x22 = require("./gallant12x22.js");
 const encoding      = require("./encoding.js");
+module.exports      = {buildFontMap, render};
 
-function buildFontMap(data, encoding){
+function buildFontMap(data, encoding, height = 22){
 	const font = {};
 	for(let i = 0; i < encoding.length; ++i){
 		const char = encoding[i];
 		font[char] = [];
-		for(let b = 0; b < 44; ++b)
-			font[char].push(data[(44 * i) + b]);
+		for(let b = 0; b < height * 2; ++b)
+			font[char].push(data[(height * 2 * i) + b]);
 	}
 	const lowLine = String.fromCharCode(0x0332);
 	font[lowLine] = font[lowLine] || font["⎽"];
@@ -57,17 +57,3 @@ function render(char, font, options = {}){
 	}
 	return output;
 }
-
-const options = {
-	bgChar: process.stdout.isTTY ? "\x1B[44m \x1B[0m" : " ",
-	underline: false,
-};
-
-const font = buildFontMap(Gallant_12x22, encoding);
-
-Object.assign(font, buildFontMap(
-	require("./bsd-glyphs.js"),
-	require("./bsd-encoding.js")
-));
-let a = encoding.map(c => render(c, font, options)).join("\n");
-console.log(a);
