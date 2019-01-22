@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-<meta charset="utf-8" />
-<title>Convert PNG to console-font data</title>
-<style>
-pre{
-	font-family: Menlig, monospace;
-	white-space: pre;
-	tab-size: 4;
-}
-</style>
-</head><body><script>
 "use strict";
 
 function loadImage(path){
@@ -67,13 +54,15 @@ function sliceImage(img, numCols, numRows){
 	return scanned;
 }
 
+document.title = "Convert PNG to console-font data";
+const args = new URL(document.location).searchParams;
+const file =  args.get("file") || "fonts/solarize/assets/Solarize.12x29.png";
+const cols = +args.get("cols") || 32;
+const rows = +args.get("rows") || 16;
 
-loadImage("Solarize.12x29.png").then(img => {
-	const fontData = sliceImage(img, 32, 16);
+loadImage(file).then(img => {
+	const fontData = sliceImage(img, cols, rows);
 	document.body.appendChild(Object.assign(document.createElement("pre"), {
 		textContent: JSON.stringify(fontData, null, "\t"),
 	}));
 });
-
-</script></body>
-</html>
